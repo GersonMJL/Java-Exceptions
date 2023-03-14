@@ -1,7 +1,7 @@
 package org.example;
 
 // Demonstrating how Java stacks executions.
-public class Flow {
+public class FlowWithTreatment {
     public static void main(String[] args) {
         System.out.println("Main init");
         method1();
@@ -22,7 +22,10 @@ public class Flow {
 
     private static void method2() {
         System.out.println("method2 init");
-        throw new MyException("Error");
-//        System.out.println("method2 end");
+        for (int i = 0; i <= 5; i++) {
+            System.out.println(i);
+            int a = i / 0;
+        }
+        System.out.println("method2 end");
     }
 }

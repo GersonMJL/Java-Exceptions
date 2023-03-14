@@ -1,7 +1,7 @@
 package org.example;
 
 // Demonstrating how Java stacks executions.
-public class Flow {
+public class FlowWithError {
     public static void main(String[] args) {
         System.out.println("Main init");
         method1();
@@ -12,7 +12,7 @@ public class Flow {
         System.out.println("method1 init");
         try {
             method2();
-        } catch (Exception err) {
+        } catch (RuntimeException err) {
             String msg = err.getMessage();
             System.out.println("Exeption: " + msg);
             err.printStackTrace();
@@ -22,7 +22,6 @@ public class Flow {
 
     private static void method2() {
         System.out.println("method2 init");
-        throw new MyException("Error");
-//        System.out.println("method2 end");
+        method2(); // StackOverFlowError
     }
 }
