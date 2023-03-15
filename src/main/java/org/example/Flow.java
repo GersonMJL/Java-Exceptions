@@ -12,17 +12,28 @@ public class Flow {
         System.out.println("method1 init");
         try {
             method2();
-        } catch (Exception err) {
-            String msg = err.getMessage();
+        } catch (Exception ex) {
+            String msg = ex.getMessage();
             System.out.println("Exeption: " + msg);
-            err.printStackTrace();
+            ex.printStackTrace();
         }
+        method3();
         System.out.println("method1 end");
     }
 
-    private static void method2() {
+    private static void method2() throws MyException {
         System.out.println("method2 init");
         throw new MyException("Error");
 //        System.out.println("method2 end");
+    }
+
+    private static void method3() {
+        System.out.println("method3 init");
+        try {
+            throw new MyException("Error");
+        } catch (MyException ex) {
+            System.out.println("Error Treatment");
+        }
+        System.out.println("method3 end");
     }
 }
